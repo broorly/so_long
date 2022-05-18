@@ -6,11 +6,11 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 22:58:47 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/16 14:18:44 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/18 12:22:36 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"get_next_line.h"
+#include"so_long.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {

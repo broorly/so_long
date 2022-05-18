@@ -6,13 +6,13 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:01:59 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/16 15:33:19 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/18 12:27:50 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdlib.h>
 # include <fcntl.h>
-#include"get_next_line.h"
+
 #include"so_long.h"
 
 char	**ft_split(char const *s, char c);
@@ -33,7 +33,7 @@ int	wall(t_data *data)
 	return(1);
 }
 
-int legal(char *str)
+int legal(char *str, t_data *data)
 {
 	int	i;
 
@@ -42,6 +42,12 @@ int legal(char *str)
 	{
 		if(str[i] != '1' && str[i] != '0' && str[i] != 'C' && str[i] != 'P' && str[i] != 'E')
 			return (0);
+		if(str[i] == 'C')
+			data->c++;
+		if(str[i] == 'E')
+			data->e++;
+		if(str[i] == 'P')
+			data->p++;
 		i++;
 	}
 	return (1);
@@ -100,6 +106,9 @@ int check (t_data *data)
 	int i;
 
 	i = 0;
+	data->c = 0;
+	data->p = 0;
+	data->e = 0;
 	while (i < data->height)
 	{
 		if (ft_strlen(data->matrix[i]) != data->width)
@@ -109,10 +118,11 @@ int check (t_data *data)
 	i = 0;
 	while (data->matrix[i])
 	{
-		if (legal(data->matrix[i]) != 1)
+		if (legal(data->matrix[i], data) != 1)
 			return (0);
 		i++;
 	}
+	printf("%d %d %d\n", data->c, data->p, data->e);
 	if (wall(data) != 1 || head(data->matrix) != 1)
 		return (0);
 	return (1);

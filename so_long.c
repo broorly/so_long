@@ -1,5 +1,5 @@
 
-#include"get_next_line.h"
+#include"so_long.h"
 #include<mlx.h>
 
 void ft_render(t_data *data)
@@ -50,6 +50,26 @@ void ft_render(t_data *data)
 		j++;
 	}
 }
+// ft_count(t_data data, char s)
+// {
+// 	int x;
+// 	int y;
+// 	int count;
+
+// 	x = height;
+// 	y = width;
+// 	while(data->matrix[x])
+// 	{
+// 		while(data->matrix[x][y])
+// 			{
+// 				if (data->matrix[x][y] == s)
+// 						cont++;
+// 					y++;
+// 			}
+// 			x++;
+// 	}
+// 	return(count);
+// }
 
 int	key_hook(int keycode, t_data *data)
 {

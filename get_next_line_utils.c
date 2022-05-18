@@ -6,12 +6,11 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 22:48:43 by mrafik            #+#    #+#             */
-/*   Updated: 2021/12/20 16:53:18 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/18 12:22:45 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"get_next_line.h"
-
+#include"so_long.h"
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
