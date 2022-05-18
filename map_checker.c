@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:01:59 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/18 12:27:50 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/18 18:48:15 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ int check (t_data *data)
 			return (0);
 		i++;
 	}
-	printf("%d %d %d\n", data->c, data->p, data->e);
 	if (wall(data) != 1 || head(data->matrix) != 1)
 		return (0);
 	return (1);

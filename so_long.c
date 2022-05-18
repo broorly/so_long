@@ -50,65 +50,97 @@ void ft_render(t_data *data)
 		j++;
 	}
 }
-// ft_count(t_data data, char s)
-// {
-// 	int x;
-// 	int y;
-// 	int count;
+int ft_count(t_data *data, char s)
+{
+	int x;
+	int y;
+	int count;
 
-// 	x = height;
-// 	y = width;
-// 	while(data->matrix[x])
-// 	{
-// 		while(data->matrix[x][y])
-// 			{
-// 				if (data->matrix[x][y] == s)
-// 						cont++;
-// 					y++;
-// 			}
-// 			x++;
-// 	}
-// 	return(count);
-// }
+	x = 0;
+	count = 0;
+	while(data->matrix[x])
+	{
+		y = 0;
+		while(data->matrix[x][y])
+			{
+				if (data->matrix[x][y] == s)
+						count++;
+					y++;
+			}
+			x++;
+	}
+	return(count);
+}
 
 int	key_hook(int keycode, t_data *data)
 {
 	static int	i = 0;
+	int x;
+	x = -1;
 	if(keycode == 13)
 	{
-		if(data->matrix[data->ypos - 1][data->xpos]!= '1')
+		if(data->matrix[data->ypos - 1][data->xpos]!= '1' &&ft_count(data, 'C') != x)
 		{
-			data->matrix[data->ypos - 1][data->xpos] = 'P';
-			data->matrix[data->ypos][data->xpos] = '0';
+			if( ft_count(data, 'C') != x && data->matrix[data->ypos - 1][data->xpos] != 'E' )
+				{
+					data->matrix[data->ypos - 1][data->xpos] = 'P';
+					data->matrix[data->ypos][data->xpos] = '0';
+				}
 		}
-		
+		else if(ft_count(data, 'C') == 0 )
+			x = 0;
+		if(data->matrix[data->ypos - 1][data->xpos] == 'E' &&  ft_count(data, 'C') == 0)
+				exit(0);
 	}
 	else if(keycode == 1)
 	{
-		if(data->matrix[data->ypos + 1][data->xpos]!= '1')
+		if(data->matrix[data->ypos + 1][data->xpos]!= '1' && ft_count(data, 'C') != x )
 		{
-			data->matrix[data->ypos + 1][data->xpos] = 'P';
-			data->matrix[data->ypos][data->xpos] = '0';
+			if( ft_count(data, 'C') != x && data->matrix[data->ypos + 1][data->xpos] != 'E' )
+			{
+				data->matrix[data->ypos + 1][data->xpos] = 'P';
+				data->matrix[data->ypos][data->xpos] = '0';
+			}
 		}
-		
+		else if(ft_count(data, 'C') == 0 )
+			x = 0;
+		if(data->matrix[data->ypos + 1][data->xpos] == 'E' &&  ft_count(data, 'C') == 0)
+				exit(0);
 	}
 	else if(keycode == 0 )
 	{
-		if(data->matrix[data->ypos][data->xpos - 1]!= '1')
+		if(data->matrix[data->ypos][data->xpos - 1]!= '1' )
 		{
-			data->matrix[data->ypos][data->xpos - 1] = 'P';
-			data->matrix[data->ypos][data->xpos] = '0';
+			if( ft_count(data, 'C') != x && data->matrix[data->ypos][data->xpos - 1] != 'E' )
+			{	
+				data->matrix[data->ypos][data->xpos - 1] = 'P';
+				data->matrix[data->ypos][data->xpos] = '0';
+				
+			}
+			else if(ft_count(data, 'C') == 0 )
+				x = 0;
+			if(data->matrix[data->ypos][data->xpos - 1] == 'E' &&  ft_count(data, 'C') == 0)
+				exit(0);
 		}
 		
 	}
 	else if(keycode == 2 )
 	{
-		if(data->matrix[data->ypos][data->xpos + 1]!= '1')
+		if(data->matrix[data->ypos][data->xpos + 1]!= '1'  )
 		{
-			data->matrix[data->ypos][data->xpos + 1] = 'P';
-			data->matrix[data->ypos][data->xpos] = '0';
+			if(data->matrix[data->ypos][data->xpos + 1] != 'E'&& ft_count(data, 'C') != x)
+				{
+					data->matrix[data->ypos][data->xpos + 1] = 'P';
+					data->matrix[data->ypos][data->xpos] = '0';
+				}
 		}
+		else if(ft_count(data, 'C') == 0 )
+			x = 0;
+		if(data->matrix[data->ypos][data->xpos + 1] == 'E' &&  ft_count(data, 'C') == 0)
+			exit(0);
 	}
+	// if(ft_count(data,'C') == 0  && ft_count(data,'E') != data->e)
+	// 	exit(0);
 	ft_render(data);
 	return (0);
 }

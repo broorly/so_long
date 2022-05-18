@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:16:16 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/18 12:23:31 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/18 19:01:15 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ char	*ft_strjoin(char *s1, char *s2);
 char	*get_next_line(int fd);
 int check (t_data *data);
 int ft_matrix(t_data *data);
+int ft_count(t_data *data, char s);
 
 #endif
