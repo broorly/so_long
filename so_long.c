@@ -2,6 +2,24 @@
 #include"so_long.h"
 #include<mlx.h>
 
+int	ft_putE(t_data *data, int i,int j)
+{
+	if(ft_count(data,'C') == 0)
+		mlx_put_image_to_window(data->mlx, data->mlx_win, data->imgE1, i * 64 , j* 64 );
+	else
+		mlx_put_image_to_window(data->mlx, data->mlx_win, data->imgE, i * 64 , j* 64 );
+	i++;
+	return(i);
+}
+int ft_putP(t_data *data, int i , int j)
+{
+	data->xpos = i;
+	data->ypos = j;
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img0, i * 64 , j* 64 );
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->imgP, i * 64 , j* 64 );
+	i++;
+	return(i);
+}
 void ft_render(t_data *data)
 {
 	int i;
@@ -21,37 +39,19 @@ void ft_render(t_data *data)
 			}
 			else if(data->matrix[j][i]== '0')
 			{
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->img1, i * 64 , j* 64 );
 				mlx_put_image_to_window(data->mlx, data->mlx_win, data->img0, i * 64 , j* 64 );
 				i++;
 			}
-			
 			if( data->matrix[j][i]== 'P')
-			{
-				data->xpos = i;
-				data->ypos = j;
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->img1, i * 64 , j* 64 );
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->img0, i * 64 , j* 64 );
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->imgP, i * 64 , j* 64 );
-				i++;
-			}
+				 i = ft_putP(data,i ,j);
 			if( data->matrix[j][i]== 'E')
-			{
-				if(ft_count(data,'C') == 0)
-					mlx_put_image_to_window(data->mlx, data->mlx_win, data->imgE1, i * 64 , j* 64 );
-				else
-					mlx_put_image_to_window(data->mlx, data->mlx_win, data->imgE, i * 64 , j* 64 );
-				i++;
-			}
+				i = ft_putE(data,i,j);
 			else if( data->matrix[j][i] == 'C')
 			{
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->img1, i * 64 , j* 64 );
 				mlx_put_image_to_window(data->mlx, data->mlx_win, data->img0, i * 64 , j* 64 );
 				mlx_put_image_to_window(data->mlx, data->mlx_win, data->imgC, i * 64 , j* 64 );
 				i++;
-			}
-			
-			
+			}	
 		}
 		j++;
 	}
