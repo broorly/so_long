@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:01:59 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/18 18:48:15 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/19 14:36:43 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,6 @@ int	wall(t_data *data)
 		x++;
 	}
 	return(1);
-}
-
-int legal(char *str, t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if(str[i] != '1' && str[i] != '0' && str[i] != 'C' && str[i] != 'P' && str[i] != 'E')
-			return (0);
-		if(str[i] == 'C')
-			data->c++;
-		if(str[i] == 'E')
-			data->e++;
-		if(str[i] == 'P')
-			data->p++;
-		i++;
-	}
-	return (1);
 }
 
 int	head(char **matrix)
