@@ -6,12 +6,12 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 11:12:52 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/14 14:57:52 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/20 20:02:11 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libft.h"
 #include <stdlib.h>
+
 static int	ft_size(char *str, char c)
 {
 	int	x;
@@ -66,15 +66,9 @@ char	**ft_split(char const *s, char c)
 
 	x = 0;
 	y = 0;
-	if (!s)
-		return (0);
 	str = (char **) malloc ((ft_size((char *)s, c) + 1) * sizeof(char *));
-	if (!str)
+	if (!str || (s[0] == '\n') || !s)
 		return (0);
-	if(s[0] == '\n')
-	{
-		return 0;
-	}
 	while (s[y] != '\0')
 	{
 		if (s[y] != c)
@@ -84,12 +78,8 @@ char	**ft_split(char const *s, char c)
 			while (s[y] != c && s[y] != '\0')
 				y++;
 		}
-		else
-		{
-			if(s[y + 1] == c)
-				return (0);
-			y++;
-		}
+		else if (s[y++ + 1] == c)
+			return (0);
 	}
 	str[x] = 0;
 	return (str);
