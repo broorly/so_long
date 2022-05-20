@@ -6,84 +6,86 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:01:59 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/19 14:36:43 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/20 14:07:51 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdlib.h>
-# include <fcntl.h>
-
 #include"so_long.h"
-
-char	**ft_split(char const *s, char c);
-char	*get_next_line(int fd);
-size_t	ft_strlen(const char *s);
 
 int	wall(t_data *data)
 {
-	int x;
+	int	x;
 
 	x = 0;
-	while(x < data->height)
+	while (x < data->height)
 	{
-		if (data->matrix[x][0] != '1' || data->matrix[x][data->width - 1] != '1')
+		if (data->matrix[x][0] != '1'
+			|| data->matrix[x][data->width - 1] != '1')
 			return (0);
 		x++;
 	}
-	return(1);
+	return (1);
 }
 
 int	head(char **matrix)
 {
 	int	x;
 	int	len;
+
 	x = 0;
-	// if(!matrix[0][x] || !matrix[len][x])
-	// 	return(0);
 	len = 0;
 	while (matrix[len])
 		len++;
-	while (matrix[0][x] != '\0' || matrix[len-1][x] != '\0')
+	while (matrix[0][x] != '\0' || matrix[len - 1][x] != '\0')
 	{
-		if(matrix[0][x] != '1' || matrix[len-1][x] != '1')
+		if (matrix[0][x] != '1' || matrix[len - 1][x] != '1')
 			return (0);
 		x++;
 	}
 	return (1);
 }
-int ft_matrix(t_data *data)
+
+void	height_width(t_data *data)
+{
+	int	x;
+
+	x = 0;
+	while (data->matrix[x])
+		x++;
+	data->height = x;
+	data->width = ft_strlen(data->matrix[0]);
+}
+
+int	ft_matrix(t_data *data)
 {
 	char	*str;
 	char	*all;
 	int		x;
 	int		fd;
-	
+
 	x = 0;
 	all = NULL;
-	fd = open("map.ber",0);
+	fd = open("map.ber", 0);
 	str = get_next_line(fd);
 	while (str)
 	{
-		all = ft_strjoin(all,str);
+		all = ft_strjoin(all, str);
 		free(str);
 		str = get_next_line(fd);
 	}
 	if (all[ft_strlen(all) - 1] == '\n' )
-		return (0); 
+		return (0);
 	data->matrix = ft_split(all, '\n');
+	free(all);
 	if (!data->matrix)
 		return (0);
-	while (data->matrix[x])
-		x++;
-	data->height = x;
-	data->width = ft_strlen(data->matrix[0]);
+	height_width(data);
 	return (1);
 }
 
-
-int check (t_data *data)
+int	check(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	data->c = 0;
@@ -103,6 +105,9 @@ int check (t_data *data)
 		i++;
 	}
 	if (wall(data) != 1 || head(data->matrix) != 1)
+		return (0);
+	if (ft_count(data, 'C') <= 0
+		|| ft_count(data, 'E') <= 0 || ft_count(data, 'P') != 1)
 		return (0);
 	return (1);
 }
@@ -126,4 +131,3 @@ int check (t_data *data)
 // 	x = check(&data);
 // 	printf("%d",x);
 // }
-

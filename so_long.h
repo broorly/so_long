@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:16:16 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/19 18:11:37 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/20 14:07:11 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <mlx.h>
-#include <stdio.h>
+# include <stdio.h>
+ 
 typedef struct data
 {
 	void	*mlx;
@@ -47,6 +48,7 @@ char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char *s1, char *s2);
 char	*get_next_line(int fd);
+char	**ft_split(char const *s, char c);
 int check (t_data *data);
 int ft_matrix(t_data *data);
 int ft_count(t_data *data, char s);
@@ -58,5 +60,6 @@ void ft_down(t_data *data,int x);
 void ft_up(t_data *data ,int x);
 int legal(char *str, t_data *data);
 int ft_count(t_data *data, char s);
+void	height_width(t_data *data);
 
 #endif
