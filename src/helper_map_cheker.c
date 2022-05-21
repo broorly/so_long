@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:23:55 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/21 13:52:14 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/21 20:15:25 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,14 @@ int	legal(char *str, t_data *data)
 			data->p++;
 		i++;
 	}
+	return (1);
+}
+
+int	type_check(char *map)
+{
+	if (ft_strcmp (ft_strchr (map, '.'), ".ber"))
+		return (0);
+	if (ft_strlen(map) < 4)
+		return (0);
 	return (1);
 }
