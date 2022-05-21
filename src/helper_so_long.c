@@ -6,13 +6,13 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:16:19 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/20 19:12:46 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/21 14:14:56 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"so_long.h"
+#include "../so_long.h"
 
-void	ft_up(t_data *data, int x)
+int	ft_up(t_data *data, int x, int move)
 {
 	if (data->matrix[data->ypos - 1][data->xpos] != '1'
 		&& ft_count(data, 'C') != x)
@@ -22,6 +22,8 @@ void	ft_up(t_data *data, int x)
 		{
 			data->matrix[data->ypos - 1][data->xpos] = 'P';
 			data->matrix[data->ypos][data->xpos] = '0';
+			move++;
+			ft_printf("move:%d\n", move);
 		}
 	}
 	else if (ft_count(data, 'C') == 0)
@@ -29,9 +31,10 @@ void	ft_up(t_data *data, int x)
 	if (data->matrix[data->ypos - 1][data->xpos] == 'E'
 		&& ft_count(data, 'C') == 0)
 		exit(0);
+	return (move);
 }
 
-void	ft_down(t_data *data, int x)
+int	ft_down(t_data *data, int x, int move)
 {
 	if (data->matrix[data->ypos + 1][data->xpos] != '1'
 		&& ft_count(data, 'C') != x)
@@ -41,6 +44,8 @@ void	ft_down(t_data *data, int x)
 		{
 			data->matrix[data->ypos + 1][data->xpos] = 'P';
 			data->matrix[data->ypos][data->xpos] = '0';
+			move++;
+			ft_printf("move:%d\n", move);
 		}
 	}
 	else if (ft_count(data, 'C') == 0)
@@ -48,9 +53,10 @@ void	ft_down(t_data *data, int x)
 	if (data->matrix[data->ypos + 1][data->xpos] == 'E'
 		&& ft_count(data, 'C') == 0)
 		exit(0);
+	return (move);
 }
 
-void	ft_left(t_data *data, int x)
+int	ft_left(t_data *data, int x, int move)
 {
 	if (data->matrix[data->ypos][data->xpos - 1] != '1')
 	{
@@ -59,6 +65,8 @@ void	ft_left(t_data *data, int x)
 		{
 			data->matrix[data->ypos][data->xpos - 1] = 'P';
 			data->matrix[data->ypos][data->xpos] = '0';
+			move++;
+			ft_printf("move:%d\n", move);
 		}
 		else if (ft_count(data, 'C') == 0)
 			x = 0;
@@ -66,9 +74,10 @@ void	ft_left(t_data *data, int x)
 			&& ft_count(data, 'C') == 0)
 			exit(0);
 	}
+	return (move);
 }
 
-void	ft_right(t_data *data, int x)
+int	ft_right(t_data *data, int x, int move)
 {
 	if (data->matrix[data->ypos][data->xpos + 1] != '1')
 	{
@@ -77,6 +86,8 @@ void	ft_right(t_data *data, int x)
 		{
 			data->matrix[data->ypos][data->xpos + 1] = 'P';
 			data->matrix[data->ypos][data->xpos] = '0';
+			move++;
+			ft_printf("move:%d\n", move);
 		}
 	}
 	else if (ft_count(data, 'C') == 0)
@@ -84,21 +95,23 @@ void	ft_right(t_data *data, int x)
 	if (data->matrix[data->ypos][data->xpos + 1] == 'E'
 		&& ft_count(data, 'C') == 0)
 		exit(0);
+	return (move);
 }
 
 int	key_hook(int keycode, t_data *data)
 {
-	int	x;
+	int			x;
+	static int	move = 0;
 
 	x = -1;
 	if (keycode == 13)
-		ft_up(data, x);
+		move = ft_up(data, x, move);
 	else if (keycode == 1)
-		ft_down(data, x);
+		move = ft_down(data, x, move);
 	else if (keycode == 0)
-		ft_left(data, x);
+		move = ft_left(data, x, move);
 	else if (keycode == 2)
-		ft_right(data, x);
+		move = ft_right(data, x, move);
 	ft_render(data);
 	return (0);
 }

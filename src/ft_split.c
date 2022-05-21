@@ -6,11 +6,11 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 11:12:52 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/20 20:02:11 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/21 13:51:56 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../so_long.h"
 
 static int	ft_size(char *str, char c)
 {

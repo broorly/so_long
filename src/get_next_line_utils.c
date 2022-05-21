@@ -6,15 +6,15 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 22:48:43 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/20 19:50:17 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/21 14:15:42 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"so_long.h"
+#include "../so_long.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (s[i] != '\0')
@@ -26,7 +26,7 @@ size_t	ft_strlen(const char *s)
 
 char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i <= ft_strlen(s))
@@ -62,11 +62,11 @@ char	*ft_strdup(const char *s1)
 	return (ptr);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, int start, int len)
 {
-	unsigned int	b;
-	char			*ptr;
-	size_t			x;
+	int		b;
+	char	*ptr;
+	int		x;
 
 	b = ft_strlen(s);
 	x = 0;

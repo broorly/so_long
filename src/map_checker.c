@@ -6,11 +6,11 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:01:59 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/20 14:07:51 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/21 14:16:46 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"so_long.h"
+#include "../so_long.h"
 
 int	wall(t_data *data)
 {
@@ -56,7 +56,7 @@ void	height_width(t_data *data)
 	data->width = ft_strlen(data->matrix[0]);
 }
 
-int	ft_matrix(t_data *data)
+int	ft_matrix(t_data *data, char *map)
 {
 	char	*str;
 	char	*all;
@@ -65,7 +65,7 @@ int	ft_matrix(t_data *data)
 
 	x = 0;
 	all = NULL;
-	fd = open("map.ber", 0);
+	fd = open(map, 0);
 	str = get_next_line(fd);
 	while (str)
 	{
@@ -111,23 +111,3 @@ int	check(t_data *data)
 		return (0);
 	return (1);
 }
-// #include<stdio.h>
-
-// int main()
-// {
-// 	t_data data;
-// 	int x;
-// 	int i;
-
-// 	i = 0;
-// 	if(!ft_matrix(&data))
-// 		return 0;
-// 	while(data.matrix[i])
-// 	{
-// 		printf("%s\n", data.matrix[i]);
-// 		i++;
-// 	}
-// 	printf("%d %d\n", data.width, data.height);
-// 	x = check(&data);
-// 	printf("%d",x);
-// }

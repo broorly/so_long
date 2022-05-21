@@ -6,11 +6,11 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:23:55 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/20 19:15:53 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/21 13:52:14 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"so_long.h"
+#include "../so_long.h"
 
 int	ft_count(t_data *data, char s)
 {
