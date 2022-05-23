@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:41:30 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/21 14:12:08 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/22 17:03:27 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,14 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		if (!ft_matrix(&data, argv[1]))
+		if (!ft_matrix(&data, argv[1]) || !check(&data))
+		{
+			ft_printf("Error\nMAP INVALID !! \n");
 			return (0);
-		if (!check(&data))
-			return (0);
+		}
 		data.mlx = mlx_init();
 		data.mlx_win = mlx_new_window(data.mlx,
-				64 * data.width, 64 * data.height, "yo");
+				64 * data.width, 64 * data.height, "so_long");
 		data.img1 = mlx_xpm_file_to_image(data.mlx, "1.xpm", &height, &width);
 		data.img0 = mlx_xpm_file_to_image(data.mlx, "0.xpm", &height, &width);
 		data.imgp = mlx_xpm_file_to_image(data.mlx, "P.xpm", &height, &width);
@@ -110,6 +111,7 @@ int	main(int argc, char **argv)
 		data.imge1 = mlx_xpm_file_to_image(data.mlx, "E1.xpm", &height, &width);
 		ft_render(&data);
 		mlx_key_hook(data.mlx_win, key_hook, &data);
+		mlx_hook(data.mlx_win, 17, 0, key_hook, &data);
 		mlx_loop(data.mlx);
 	}
 }

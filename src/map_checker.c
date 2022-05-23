@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:01:59 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/21 20:17:05 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/23 16:07:03 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,19 @@ int	ft_matrix(t_data *data, char *map)
 	int		x;
 	int		fd;
 
-	if (type_check(map) != 1)
-		return (0);
 	x = 0;
 	all = NULL;
 	fd = open(map, 0);
 	str = get_next_line(fd);
+	if (fd < 0 || type_check(map) != 1 || !str)
+		return (0);
 	while (str)
 	{
 		all = ft_strjoin(all, str);
 		free(str);
 		str = get_next_line(fd);
 	}
-	if (all[ft_strlen(all) - 1] == '\n' )
+	if (all[ft_strlen(all) - 1] == '\n')
 		return (0);
 	data->matrix = ft_split(all, '\n');
 	free(all);
