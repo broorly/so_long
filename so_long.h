@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:16:16 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/21 20:16:02 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/25 15:50:25 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ int		ft_count(t_data *data, char s);
 void	height_width(t_data *data);
 int		type_check(char *map);
 int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_strrchr(const char *s, int c);
 
 #endif

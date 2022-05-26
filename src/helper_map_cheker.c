@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:23:55 by mrafik            #+#    #+#             */
-/*   Updated: 2022/05/23 16:09:13 by mrafik           ###   ########.fr       */
+/*   Updated: 2022/05/25 15:49:08 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	type_check(char *map)
 {
 	char	*str;
 
-	str = ft_strchr(map, '.');
+	str = ft_strrchr(map, '.');
 	if (!str)
 		return (0);
 	else if (ft_strcmp(str, ".ber"))
